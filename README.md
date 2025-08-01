@@ -10,8 +10,6 @@ AdSiP OEM用のAPIドキュメントをMarkdownでHostするもの。どこか�
 * [docsify](https://yamachan.github.io/docsify-docs-ja/#/)
     * `npm i docsify-cli -g`
 
-docsifyについて詳しくは[こちら](https://yamachan.github.io/docsify-docs-ja/#/)。
-
 ## how
 
 ### serve
