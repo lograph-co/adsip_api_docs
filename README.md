@@ -20,6 +20,8 @@ AdSiP OEM用のAPIドキュメントをMarkdownでHostするもの。どこか�
 docsify serve ./docs
 ```
 
+とすると `http://localhost:3000/` でプレビューできます。
+
 ### write
 
 `./docs` ディレクトリにあるMarkdownファイルを修正してください。また、 `README.md` ファイルが index となります。
