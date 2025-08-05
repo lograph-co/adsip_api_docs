@@ -44,7 +44,7 @@
 | [`/authentications`](authentications?id=authentications-認証) | 認証 |
 | [`/serviceConsumers`](serviceConsumers?id=serviceconsumers-サービスコンシューマー) | サービスコンシューマー |
 | [`/users`](users?id=users-ユーザー) | ユーザー |
-| [`/accounts`](accounts?id=title-accounts-アカウント) | アカウント |
+| [`/accounts`](accounts?id=accounts-アカウント) | アカウント |
 | [`/campaigns`](campaigns?id=campaigns-キャンペーン) | キャンペーン |
 | [`/observers`](observers?id=observers-観測点) | 観測点 |
 | [`/trackingNumbers`](trackingNumbers?id=trackingnumbers-計測番号) | 計測番号 |
