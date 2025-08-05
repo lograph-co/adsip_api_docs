@@ -38,14 +38,16 @@
 
 ## 定義されているリソースの仕様
 
-* [`/me` - 自分自身の情報](me.md)
-* [`/authentications` - 認証](authentications.md)
-* [`/serviceConsumers` - サービスコンシューマー](serviceConsumers.md)
-* [`/users` - ユーザー](users.md)
-* [`/accounts` - アカウント](accounts.md)
-* [`/campaigns` - キャンペーン](campaigns.md)
-* [`/observers` - 観測点](observers.md)
-* [`/trackingNumbers` - 計測番号](trackingNumbers.md)
-* [`/audiences/web` - ウェブチャネルの訪問者ログ](audiences-web.md)
-* [`/behaviors/phone/calls` - 入電ログ](behaviors-phone-calls.md)
-* [`/count/trackingSessions` - 計測セッション](count-trackingSessions.md)
+| リソース | 説明 |
+|----------|-----|
+| [`/me`](me?id=me-自分自身の情報) | 自分自身の情報 |
+| [`/authentications`](authentications?id=authentications-認証) | 認証 |
+| [`/serviceConsumers`](serviceConsumers?id=serviceconsumers-サービスコンシューマー) | サービスコンシューマー |
+| [`/users`](users?id=users-ユーザー) | ユーザー |
+| [`/accounts`](accounts?id=title-accounts-アカウント) | アカウント |
+| [`/campaigns`](campaigns?id=campaigns-キャンペーン) | キャンペーン |
+| [`/observers`](observers?id=observers-観測点) | 観測点 |
+| [`/trackingNumbers`](trackingNumbers?id=trackingnumbers-計測番号) | 計測番号 |
+| [`/audiences/web`](audiences-web?id=audiencesweb-ウェブチャネルの訪問者ログ) | ウェブチャネルの訪問者ログ |
+| [`/behaviors/phone/calls`](behaviors-phone-calls?id=behaviorsphonecalls-入電ログ) | 入電ログ |
+| [`/count/trackingSessions`](count-trackingSessions?id=counttrackingsessions-計測セッション) | 計測セッション |
