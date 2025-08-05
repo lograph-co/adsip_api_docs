@@ -47,3 +47,9 @@ docsify serve docs
 ### write
 
 `docs` ディレクトリにあるMarkdownファイルを修正してください。また、 `README.md` ファイルが index となります。
+
+### deploy
+
+修正後、修正したファイルを `commit` して `main` ブランチに `push` すると以下URLに `deploy` されます。
+
+https://doc.adsip.net/
