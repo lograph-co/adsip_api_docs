@@ -2,7 +2,7 @@
 
 ## what
 
-AdSiP OEM用のAPIドキュメントをMarkdownでHostするもの。どこかにDeployしてお使いください。
+AdSiP OEM用のAPIドキュメントをMarkdownでHostするもの。
 
 ## requirements
 
@@ -12,9 +12,17 @@ AdSiP OEM用のAPIドキュメントをMarkdownでHostするもの。どこか�
 
 ## how
 
+### serve
+
+このリポジトリをClone後、cdして以下コマンド実行とすると `http://localhost:3000/` でプレビューできます。
+
+```shell
+docsify serve docs
+```
+
 ### where
 
-以下のような構造になっていますので `docs` ディレクトリ配下の `.md` ファイルを修正してください。
+以下のような構造になっていますので `docs` ディレクトリ配下の `.md` ファイルを修正してください。また、 `README.md` ファイルが index となります。
 
 ```
 ├── docs
@@ -33,20 +41,6 @@ AdSiP OEM用のAPIドキュメントをMarkdownでHostするもの。どこか�
 │   └── users.md
 └── README.md
 ```
-
-### serve
-
-このリポジトリをClone後、cdして以下コマンド実行
-
-```shell
-docsify serve docs
-```
-
-とすると `http://localhost:3000/` でプレビューできます。
-
-### write
-
-`docs` ディレクトリにあるMarkdownファイルを修正してください。また、 `README.md` ファイルが index となります。
 
 ### deploy
 
