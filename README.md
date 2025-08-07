@@ -26,7 +26,7 @@ docsify serve docs
 
 ```
 ├── docs
-│   ├── accounts .md
+│   ├── accounts.md
 │   ├── audiences-web.md
 │   ├── authentications.md
 │   ├── behaviors-phone-calls.md
