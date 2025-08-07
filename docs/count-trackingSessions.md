@@ -144,3 +144,19 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれているセッション数 |
+| `total` | number | トータル | Query結果に含まれているセッション数 |
+
+##### `"trackingSessions.byCampaign"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `campaignId` | number | キャンペーンID |  |
+| `label` | string | キャンペーン名 |  |
+| `counts.date` | string | セッション集計日 | `yyyy-mm-dd` |
+| `counts.counr` | number | セッション数 |  |

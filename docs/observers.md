@@ -305,3 +305,39 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれている観測点数 |
+| `total` | number | トータル | Query結果に含まれている観測点数 |
+
+##### `"_embedded.observers"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `observerId` | number | 観測点ID |  |
+| `campaignId` | number | キャンペーンID |  |
+| `label` | string | キャンペーン名 |  |
+| `lifetime` | number | 有効期限 |  |
+| `priority` | number | 優先度 |  |
+| `createdAt` | date | 作成日時 |  |
+| `belongs` | array | 参照できるユーザーを `userId` で指定 |  |
+| `condition.channel` | string | 計測チャネル | `web` または `phone` |
+| `condition.targetPhoneNumber` | string | 置換対象番号 |  |
+| `condition.targetDevice` | string | 対応デバイス | `pc` , `mobile` 、またはその両方である `all` |
+| `belongs` | array | belongs | 参照できるユーザーを `userId` で指定 |
+| `condition.triggers` | array | 発動条件トリガ |  |
+
+##### `"condition.triggers"` 以下
+
+* webチャネルの場合、 `condition.triggers` は存在しません。
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `target` | string | 置換対象URL種別 | 評価の対象となるURL設定。 ランディングページ（ `landing` ）、リファラ（ `referrer` ）、最近見たページ（ `currentUrl` ） から選択 |
+| `type` | string | 評価対象要素 | URLのどの箇所を評価対象とするかを指定。メイン（ `domain` ）、パス（ `path` ）、URL パラメータ（ `query` ）から選択 |
+| `subject` | string | パラメータ名 | 評価対象となるパラメータ名 |
+| `method` | string | 評価方法 | 完全一致（ `equal` ）、前方一致（ `forwardMatch` ）、部分一致（ `partialMatch` ）、正規表現（ `regex` ）から選択  |
+| `formula` | string | 評価式 | 評価文字列 |

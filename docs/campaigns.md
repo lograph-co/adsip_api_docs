@@ -283,3 +283,24 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれているキャンペーン数 |
+| `total` | number | トータル | Query結果に含まれているキャンペーン数 |
+
+##### `"_embedded.campaigns"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `campaignId` | number | キャンペーンID |  |
+| `accountId` | number | アカウントID |  |
+| `label` | string | キャンペーン名 |  |
+| `beganAt` | date | キャンペーン開始日時 |  |
+| `finishedAt` | date | キャンペーン終了日時 |  |
+| `createdAt` | date | キャンペーン作成日時 |  |
+| `deletedAt` | date | キャンペーン削除日時 |  |
+| `defaultTrackingNumberId` | number | デフォルト計測番号ID | 配信時、最優先される計測番号ID |
+| `belongs` | array | belongs | 参照できるユーザーを `userId` で指定 |

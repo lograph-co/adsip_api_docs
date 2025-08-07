@@ -138,3 +138,28 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `userId` | number | ユーザーID |  |
+| `email` | string | メールアドレス |  |
+| `label` | string | ユーザー名 |  |
+| `role` | number | ロール | `1` : システム管理者<br>`2` : 管理者<br>`3` : マネージャー<br>`8` : クライアント<br`32` : ゲスト |
+| `createdAt` | date | 作成日時 |  |
+| `isAgent` | boolean | 代理店フラグ |  |
+
+
+##### `"_embedded.accounts"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `accountId` | number | アカウントID |  |
+| `serviceConsumerId` | number | サービスコンシューマーID | `3` 固定 |
+| `ownerId` | number | オーナーID |  |
+| `label` | string | アカウント名 |  |
+| `isAgency` | boolean | 代理店フラグ |  |
+| `agencyId` | number | 代理店アカウントID |  |
+| `createdAt` | date | 作成日 |  |
+| `belongs.userId` | number | アカウントに所属するユーザーID |  |

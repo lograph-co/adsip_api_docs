@@ -128,3 +128,35 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれている入電ログ数 |
+| `total` | number | トータル | Query結果に含まれている入電ログ数 |
+
+##### `"_embedded.calls"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `visitedAt` | date | 来訪日時 |  |
+| `calledAt` | date | 入電日時 |  |
+| `observerId` | number | 観測点ID |  |
+| `observerLabel` | string | 観測点名 |  |
+| `audienceId` | string | 来訪者ID |  |
+| `callId` | string | 入電ID |  |
+| `media` | string | 広告種別 | `utm_medium` の値 |
+| `source` | string | 広告媒体 | `utm_source` の値 |
+| `content` | string | 広告コンテンツ | `utm_content` の値 |
+| `keyword` | string | キーワード |  |
+| `pageView` | number | PV |  |
+| `callDuration` | number | 通話時間 | 秒 |
+| `callerPhoneNumber` | string | 発信者番号 |  |
+| `trackingPhoneNumber` | string | 計測番号 |  |
+| `hangupCode` | number | 切断理由コード |  |
+| `deviceType` | string | 端末種別 |  |
+| `causedUrl` | string | ランディングページ |  |
+| `recordedAudioUrl` | string | 録音ファイル |  |
+| `matchType` | string | マッチタイプ | 広告表示につながったマッチタイプ |
+| `referrerDomain` | string | リファラドメイン |  |

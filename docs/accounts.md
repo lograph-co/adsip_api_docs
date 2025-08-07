@@ -198,3 +198,34 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれているアカウント数 |
+| `total` | number | トータル | Query結果に含まれているアカウント数 |
+
+
+##### `"properties._embedded"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `accountId` | number | アカウントID |  |
+| `serviceConsumerId` | number | サービスコンシューマーID | `3` 固定 |
+| `ownerId` | number | オーナーID |  |
+| `label` | string | アカウント名 |  |
+| `isAgency` | boolean | 代理店フラグ |  |
+| `agencyId` | number | 代理店アカウントID |  |
+| `createdAt` | date | 作成日 |  |
+| `belongs` | array | belongs | 参照できるユーザーを `userId` で指定 |
+
+##### `"properties._embedded.campaigns"` 以下
+
+| 項目 | タイプ | 説明 |
+|-----|-------|------|
+| `campaignId` | number | キャンペーンID |
+| `accountId` | number | アカウントID |
+| `label` | string | キャンペーン名 |
+| `belongs` | array | 参照できるユーザーを `userId` で指定 |  |
+| `createdAt` | date | キャンペーン作成日 |

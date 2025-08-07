@@ -266,3 +266,21 @@
 	}
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれている計測番号数 |
+| `total` | number | トータル | Query結果に含まれている計測番号数 |
+| `createdAt` | date | 作成日時 |  |
+
+##### `"_embedded.trackingNumbers"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `trackingNumberSupplierId` | number | 計測番号ID |  |
+| `phoneNumber` | string | 電話番号 |  |
+| `accountId` | number | アカウントID |  |
+| `campaignId` | number | キャンペーンID |  |
+| `observers` | array | 観測点 |  |

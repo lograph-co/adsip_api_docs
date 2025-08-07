@@ -294,3 +294,34 @@
     }
 }
 ```
+
+#### レスポンス項目
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `count` | number | カウント | レスポンスに含まれている訪問者ログ数 |
+| `total` | number | トータル | Query結果に含まれている訪問者ログ数 |
+
+##### `"_embedded.audiences"` 以下
+
+| 項目 | タイプ | 説明 | 備考 |
+|-----|-------|------|-----|
+| `visitedAt` | date | 来訪日時 |  |
+| `audienceId` | string | 来訪者ID |  |
+| `media` | string | 広告種別 | `utm_medium` の値 |
+| `source` | string | 広告媒体 | `utm_source` の値 |
+| `content` | string | 広告コンテンツ | `utm_content` の値 |
+| `keyword` | string | キーワード |  |
+| `history` | object | 来訪履歴ログ |  |
+| `history.behaviorId` | string | ログID |
+| `history.createdAt` | date | 作成日 |
+| `history.url` | string | URL |
+| `history.referrer` | string | リファラ |
+| `webCv` | number | ウェブCV |  |
+| `callCv` | number | 電話CV |  |
+| `stayDuration` | number | 滞在時間 | 秒 |
+| `callDuration` | number | 通話時間 | 秒 |
+| `callerPhoneNumber` | string | 発信者番号 |  |
+| `matchType` | string | マッチタイプ | 広告表示につながったマッチタイプ |
+| `referrerDomain` | string | リファラドメイン |  |
+| `landingPageUrl` | string | ランディングページURL |  |
