@@ -46,4 +46,4 @@ docsify serve docs
 
 修正後、修正したファイルを `commit` して `main` ブランチに `push` すると以下URLに `deploy` されます。
 
-https://doc.adsip.net/
+https://docs.adsip.net/
