@@ -4,7 +4,7 @@
 
 * AdSiPは複数のチャネルに点在している行動の相関を見出し、それらを一連の行動として再現します。
 * AdSiP自体は Web API として実装されたヘッドレスシステムです。
-* コンソールは別途（[https://console.adsip.net/](https://console.omni-databank.com/)）構築されています。
+* コンソールは別途（[https://console.adsip.net/](https://console.adsip.net/)）構築されています。
 
 ## 著作権・禁止事項
 
