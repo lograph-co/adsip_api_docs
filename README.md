@@ -1,3 +1,4 @@
+![logo](docs/assets/logo.png)
 # AdSiP API Documents
 
 ## what

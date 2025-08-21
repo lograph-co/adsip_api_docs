@@ -1,3 +1,4 @@
+![logo](assets/logo.png)
 # AdSiP API Reference
 
 ## 概要
