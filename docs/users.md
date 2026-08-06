@@ -15,21 +15,30 @@
 
 ```json
 {
-	"parameters": {
-		"userId": {
-			"type": "integer"
-		},
-		"sid": {
-			"type": "integer"
-		},
-		"page": {
-			"type": "integer",
-			"default": "1"
-		},
-		"limit": {
-			"type": "integer",
-			"default": "100"
-		}
-	}
+ "parameters": {
+  "userId": {
+   "type": "integer"
+  },
+  "sid": {
+   "type": "integer"
+  },
+  "page": {
+   "type": "integer",
+   "default": "1"
+  },
+  "limit": {
+   "type": "integer",
+   "default": "100"
+  }
+ }
 }
 ```
+
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | 初期値 |
+| ------ | :------: | ------ | :------: |
+| `userId` | integer | ユーザーID | |
+| `sid` | integer | サービスコンシューマID | |
+| `page` | integer | 取得するページ番号 | `1` |
+| `limit` | integer | 1ページあたりの取得件数 | `100` |

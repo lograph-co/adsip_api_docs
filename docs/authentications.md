@@ -4,12 +4,12 @@
 
 ```json
 {
-	"aud": {
-		"id": "{userId}",
-		"role": "{role}",
-		"label": "{label}"
-	},
-	"exp": "{expiresIn}"
+ "aud": {
+  "id": "{userId}",
+  "role": "{role}",
+  "label": "{label}"
+ },
+ "exp": "{expiresIn}"
 }
 ```
 
@@ -33,75 +33,83 @@
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonValidate/authentications/post.json",
-	"type": "object",
-	"title": "A schema for request body when request `POST /authentications`.",
-	"required": [
-		"sid",
-		"email",
-		"password"
-	],
-	"properties": {
-		"sid": {
-			"title": "Service consumer ID",
-			"oneOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				}
-			]
-		},
-		"email": {
-			"title": "E-mail address",
-			"type": "string",
-			"format": "email"
-		},
-		"password": {
-			"title": "Password",
-			"type": "string"
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonValidate/authentications/post.json",
+ "type": "object",
+ "title": "A schema for request body when request `POST /authentications`.",
+ "required": [
+  "sid",
+  "email",
+  "password"
+ ],
+ "properties": {
+  "sid": {
+   "title": "Service consumer ID",
+   "oneOf": [
+    {
+     "type": "number"
+    },
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    }
+   ]
+  },
+  "email": {
+   "title": "E-mail address",
+   "type": "string",
+   "format": "email"
+  },
+  "password": {
+   "title": "Password",
+   "type": "string"
+  }
+ }
 }
 ```
+
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | パターン/列挙型 | 初期値 | 必須 |
+| --- | :----: | ---- | :--------------: | :---------: | :---------: |
+| `sid` | number / string | Service consumer ID | `^[0-9]+$` | | * |
+| `email` | string | E-mailアドレス | email | | * |
+| `password` | string | パスワード | | | * |
 
 #### レスポンスの JSON-Schema
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonSchema/authentications/post.json",
-	"type": "object",
-	"title": "A schema for response body when request `POST /authentications`.",
-	"required": [
-		"accessToken",
-		"refreshToken",
-		"expiresIn"
-	],
-	"properties": {
-		"accessToken": {
-			"title": "Access token",
-			"type": "string"
-		},
-		"refreshToken": {
-			"title": "Refresh token",
-			"type": "string"
-		},
-		"expiresIn": {
-			"title": "Expiration",
-			"type": "number"
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonSchema/authentications/post.json",
+ "type": "object",
+ "title": "A schema for response body when request `POST /authentications`.",
+ "required": [
+  "accessToken",
+  "refreshToken",
+  "expiresIn"
+ ],
+ "properties": {
+  "accessToken": {
+   "title": "Access token",
+   "type": "string"
+  },
+  "refreshToken": {
+   "title": "Refresh token",
+   "type": "string"
+  },
+  "expiresIn": {
+   "title": "Expiration",
+   "type": "number"
+  }
+ }
 }
 ```
 
 #### レスポンス項目
 
 | 項目 | タイプ | 説明 |
-|-----|-------|------|
+| ----- | ------- | ------ |
 | `expiresIn` | number | 有効期間 |
 | `accessToken` | string | アクセストークン |
 | `refreshToken` | string | リフレッシュトークン |
@@ -114,56 +122,62 @@
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonValidate/authentications/put.json",
-	"type": "object",
-	"title": "A schema for request body when request `PUT /authentications`.",
-	"required": [
-		"refreshToken"
-	],
-	"properties": {
-		"refreshToken": {
-			"title": "Refresh token",
-			"type": "string"
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonValidate/authentications/put.json",
+ "type": "object",
+ "title": "A schema for request body when request `PUT /authentications`.",
+ "required": [
+  "refreshToken"
+ ],
+ "properties": {
+  "refreshToken": {
+   "title": "Refresh token",
+   "type": "string"
+  }
+ }
 }
 ```
+
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | パターン/列挙型 | 初期値 | 必須 |
+| --- | :----: | ---- | :--------------: | :---------: | :---------: |
+| `refreshToken` | string | リフレッシュトークン | | | * |
 
 #### レスポンスの JSON-Schema
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonSchema/authentications/post.json",
-	"type": "object",
-	"title": "A schema for response body when request `PUT /authentications`.",
-	"required": [
-		"accessToken",
-		"refreshToken",
-		"expiresIn"
-	],
-	"properties": {
-		"accessToken": {
-			"title": "Access token",
-			"type": "string"
-		},
-		"refreshToken": {
-			"title": "Refresh token",
-			"type": "string"
-		},
-		"expiresIn": {
-			"title": "Expiration",
-			"type": "number"
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonSchema/authentications/post.json",
+ "type": "object",
+ "title": "A schema for response body when request `PUT /authentications`.",
+ "required": [
+  "accessToken",
+  "refreshToken",
+  "expiresIn"
+ ],
+ "properties": {
+  "accessToken": {
+   "title": "Access token",
+   "type": "string"
+  },
+  "refreshToken": {
+   "title": "Refresh token",
+   "type": "string"
+  },
+  "expiresIn": {
+   "title": "Expiration",
+   "type": "number"
+  }
+ }
 }
 ```
 
 #### レスポンス項目
 
 | 項目 | タイプ | 説明 |
-|-----|-------|------|
+| ----- | ------- | ------ |
 | `expiresIn` | number | 有効期間 |
 | `accessToken` | string | アクセストークン |
 | `refreshToken` | string | リフレッシュトークン |

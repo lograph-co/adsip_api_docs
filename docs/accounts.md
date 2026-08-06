@@ -37,195 +37,203 @@
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonValidate/accounts/get.json",
-	"type": "object",
-	"title": "A schema for request parameters when `GET /accounts`.",
-	"properties": {
-		"accountId": {
-			"title": "Account ID",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"relationshipTypes": {
-			"title": "Relationship Types",
-			"anyOf": [
-				{
-					"type": "string",
-					"default": "owner,belongs"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"page": {
-			"title": "Number of page",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"limit": {
-			"title": "Number of contain in 1 page",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "null"
-				}
-			]
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonValidate/accounts/get.json",
+ "type": "object",
+ "title": "A schema for request parameters when `GET /accounts`.",
+ "properties": {
+  "accountId": {
+   "title": "Account ID",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "relationshipTypes": {
+   "title": "Relationship Types",
+   "anyOf": [
+    {
+     "type": "string",
+     "default": "owner,belongs"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "page": {
+   "title": "Number of page",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "limit": {
+   "title": "Number of contain in 1 page",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  }
+ }
 }
 ```
+
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | パターン/列挙型 | 初期値 |
+| ------ | :------: | ------ | :--------------: | :------: |
+| `accountId` | string / null | アカウントID | `^[0-9]+$` | |
+| `relationshipTypes` | string / null | リレーションシップタイプ | | `owner,belongs` |
+| `page` | string / null | 取得するページ番号 | `^[0-9]+$` | |
+| `limit` | string / null | 1ページあたりの取得件数 | `^[0-9]+$` | |
 
 #### レスポンスの JSON-Schema
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonSchema/accounts/get.json",
-	"type": "object",
-	"title": "A schema for response body when request `GET /accounts`.",
-	"required": [
-		"count",
-		"total",
-		"_embedded"
-	],
-	"properties": {
-		"count": {
-			"title": "Number of account in a response.",
-			"type": "number"
-		},
-		"total": {
-			"title": "Number of account in a query.",
-			"type": "number"
-		},
-		"_embedded": {
-			"type": "object",
-			"required": [
-				"accounts"
-			],
-			"properties": {
-				"accounts": {
-					"title": "Account collection",
-					"type": "array",
-					"items": {
-						"title": "Account",
-						"type": "object",
-						"required": [
-							"accountId",
-							"label",
-							"ownerId",
-							"createdAt"
-						],
-						"properties": {
-							"accountId": {
-								"title": "Account ID",
-								"type": "number",
-								"readOnly": true,
-								"examples": [
-									1
-								]
-							},
-							"label": {
-								"title": "Account name",
-								"type": "string",
-								"examples": [
-									"Account name"
-								]
-							},
-							"ownerId": {
-								"title": "Owner user ID",
-								"type": "number",
-								"examples": [
-									1
-								]
-							},
-							"agencyId": {
-								"title": "Agency account ID",
-								"type": "number",
-								"examples": [
-									1
-								]
-							},
-							"belongs": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"userId": {
-											"title": "Belonged user ID",
-											"type": "number",
-											"examples": [
-												1
-											]
-										}
-									}
-								}
-							},
-							"isAgency": {
-								"title": "Whether account is agency",
-								"type": "boolean",
-								"default": false
-							},
-							"createdAt": {
-								"title": "Created datetime",
-								"type": "string",
-								"format": "date-time",
-								"readOnly": true
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonSchema/accounts/get.json",
+ "type": "object",
+ "title": "A schema for response body when request `GET /accounts`.",
+ "required": [
+  "count",
+  "total",
+  "_embedded"
+ ],
+ "properties": {
+  "count": {
+   "title": "Number of account in a response.",
+   "type": "number"
+  },
+  "total": {
+   "title": "Number of account in a query.",
+   "type": "number"
+  },
+  "_embedded": {
+   "type": "object",
+   "required": [
+    "accounts"
+   ],
+   "properties": {
+    "accounts": {
+     "title": "Account collection",
+     "type": "array",
+     "items": {
+      "title": "Account",
+      "type": "object",
+      "required": [
+       "accountId",
+       "label",
+       "ownerId",
+       "createdAt"
+      ],
+      "properties": {
+       "accountId": {
+        "title": "Account ID",
+        "type": "number",
+        "readOnly": true,
+        "examples": [
+         1
+        ]
+       },
+       "label": {
+        "title": "Account name",
+        "type": "string",
+        "examples": [
+         "Account name"
+        ]
+       },
+       "ownerId": {
+        "title": "Owner user ID",
+        "type": "number",
+        "examples": [
+         1
+        ]
+       },
+       "agencyId": {
+        "title": "Agency account ID",
+        "type": "number",
+        "examples": [
+         1
+        ]
+       },
+       "belongs": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "properties": {
+          "userId": {
+           "title": "Belonged user ID",
+           "type": "number",
+           "examples": [
+            1
+           ]
+          }
+         }
+        }
+       },
+       "isAgency": {
+        "title": "Whether account is agency",
+        "type": "boolean",
+        "default": false
+       },
+       "createdAt": {
+        "title": "Created datetime",
+        "type": "string",
+        "format": "date-time",
+        "readOnly": true
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 ```
 
 #### レスポンス項目
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
+| ----- | ------- | ------ | ----- |
 | `count` | number | カウント | レスポンスに含まれているアカウント数 |
 | `total` | number | トータル | Query結果に含まれているアカウント数 |
-
 
 ##### `"properties._embedded"` 以下
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
-| `accountId` | number | アカウントID |  |
+| ----- | ------- | ------ | ----- |
+| `accountId` | number | アカウントID | |
 | `serviceConsumerId` | number | サービスコンシューマーID | `3` 固定 |
-| `ownerId` | number | オーナーID |  |
-| `label` | string | アカウント名 |  |
-| `isAgency` | boolean | 代理店フラグ |  |
-| `agencyId` | number | 代理店アカウントID |  |
-| `createdAt` | date | 作成日 |  |
+| `ownerId` | number | オーナーID | |
+| `label` | string | アカウント名 | |
+| `isAgency` | boolean | 代理店フラグ | |
+| `agencyId` | number | 代理店アカウントID | |
+| `createdAt` | date | 作成日 | |
 | `belongs` | array | belongs | 参照できるユーザーを `userId` で指定 |
 
 ##### `"properties._embedded.campaigns"` 以下
 
 | 項目 | タイプ | 説明 |
-|-----|-------|------|
+| ----- | ------- | ------ |
 | `campaignId` | number | キャンペーンID |
 | `accountId` | number | アカウントID |
 | `label` | string | キャンペーン名 |
-| `belongs` | array | 参照できるユーザーを `userId` で指定 |  |
+| `belongs` | array | 参照できるユーザーを `userId` で指定 | |
 | `createdAt` | date | キャンペーン作成日 |

@@ -114,6 +114,18 @@
 }
 ```
 
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | パターン/列挙型 | 初期値 | 必須 |
+| ------ | :------: | ------ | :--------------: | :------: | :---: |
+| `campaignId` | string / integer | キャンペーンID | `^[0-9]+` | | * |
+| `beginTimestamp` | string / integer | 取得対象範囲の開始日時Timestamp(UTC) | `^[0-9]+` | | * |
+| `endTimestamp` | string / integer | 取得対象範囲の終了日時Timestamp(UTC) | `^[0-9]+` | | * |
+| `page` | string / integer / null | 取得するページ番号 | `^[0-9]+` | `1` | |
+| `limit` | string / integer / null | 1ページあたりの取得件数 | `^[0-9]+` | `100` | |
+| `sort` | string / null | ソート順 | `desc`, `asc` | `desc` | |
+| `sortBy` | string | ソート対象カラム | | `createdAt` | |
+
 #### レスポンスの JSON-Schema
 
 ```json
@@ -298,30 +310,30 @@
 #### レスポンス項目
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
+| ----- | ------- | ------ | ----- |
 | `count` | number | カウント | レスポンスに含まれている訪問者ログ数 |
 | `total` | number | トータル | Query結果に含まれている訪問者ログ数 |
 
 ##### `"_embedded.audiences"` 以下
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
-| `visitedAt` | date | 来訪日時 |  |
-| `audienceId` | string | 来訪者ID |  |
+| ----- | ------- | ------ | ----- |
+| `visitedAt` | date | 来訪日時 | |
+| `audienceId` | string | 来訪者ID | |
 | `media` | string | 広告種別 | `utm_medium` の値 |
 | `source` | string | 広告媒体 | `utm_source` の値 |
 | `content` | string | 広告コンテンツ | `utm_content` の値 |
-| `keyword` | string | キーワード |  |
-| `history` | object | 来訪履歴ログ |  |
+| `keyword` | string | キーワード | |
+| `history` | object | 来訪履歴ログ | |
 | `history.behaviorId` | string | ログID |
 | `history.createdAt` | date | 作成日 |
 | `history.url` | string | URL |
 | `history.referrer` | string | リファラ |
-| `webCv` | number | ウェブCV |  |
-| `callCv` | number | 電話CV |  |
+| `webCv` | number | ウェブCV | |
+| `callCv` | number | 電話CV | |
 | `stayDuration` | number | 滞在時間 | 秒 |
 | `callDuration` | number | 通話時間 | 秒 |
-| `callerPhoneNumber` | string | 発信者番号 |  |
+| `callerPhoneNumber` | string | 発信者番号 | |
 | `matchType` | string | マッチタイプ | 広告表示につながったマッチタイプ |
-| `referrerDomain` | string | リファラドメイン |  |
-| `landingPageUrl` | string | ランディングページURL |  |
+| `referrerDomain` | string | リファラドメイン | |
+| `landingPageUrl` | string | ランディングページURL | |

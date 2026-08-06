@@ -1,4 +1,5 @@
 ![logo](assets/logo.png)
+
 # AdSiP API Reference
 
 ## 概要
@@ -40,7 +41,7 @@
 ## 定義されているリソースの仕様
 
 | リソース | 説明 |
-|----------|-----|
+| ---------- | ----- |
 | [`/me`](me?id=me-自分自身の情報) | 自分自身の情報 |
 | [`/authentications`](authentications?id=authentications-認証) | 認証 |
 | [`/serviceConsumers`](serviceConsumers?id=serviceconsumers-サービスコンシューマー) | サービスコンシューマー |
@@ -51,4 +52,5 @@
 | [`/trackingNumbers`](trackingNumbers?id=trackingnumbers-計測番号) | 計測番号 |
 | [`/audiences/web`](audiences-web?id=audiencesweb-ウェブチャネルの訪問者ログ) | ウェブチャネルの訪問者ログ |
 | [`/behaviors/phone/calls`](behaviors-phone-calls?id=behaviorsphonecalls-入電ログ) | 入電ログ |
+| [`/summaryLogs/behaviors/phone/calls`](summaryLogs-behaviors-phone-calls?id=summarylogsbehaviorsphonecalls-入電サマリログ) | 入電サマリログ |
 | [`/count/trackingSessions`](count-trackingSessions?id=counttrackingsessions-計測セッション) | 計測セッション |

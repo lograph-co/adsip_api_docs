@@ -15,148 +15,157 @@
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonValidate/count/trackingSessions/get.json",
-	"type": "object",
-	"title": "A schema for request parameters of `GET /count/trackingSessions`.",
-	"required": [
-		"campaignId",
-		"beginDate",
-		"endDate",
-		"channel"
-	],
-	"properties": {
-		"campaignId": {
-			"title": "集計対象となるキャンペーン ID",
-			"type": "number"
-		},
-		"beginDate": {
-			"title": "集計範囲の開始日",
-			"type": "string",
-			"format": "date",
-			"example": "2018-01-01"
-		},
-		"endDate": {
-			"title": "集計範囲の終了日",
-			"type": "string",
-			"format": "date",
-			"example": "2018-01-01"
-		},
-		"channel": {
-			"title": "集計対象となるチャネル",
-			"type": "string",
-			"default": "phone",
-			"enum": [
-				"phone",
-				"web"
-			]
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonValidate/count/trackingSessions/get.json",
+ "type": "object",
+ "title": "A schema for request parameters of `GET /count/trackingSessions`.",
+ "required": [
+  "campaignId",
+  "beginDate",
+  "endDate",
+  "channel"
+ ],
+ "properties": {
+  "campaignId": {
+   "title": "集計対象となるキャンペーン ID",
+   "type": "number"
+  },
+  "beginDate": {
+   "title": "集計範囲の開始日",
+   "type": "string",
+   "format": "date",
+   "example": "2018-01-01"
+  },
+  "endDate": {
+   "title": "集計範囲の終了日",
+   "type": "string",
+   "format": "date",
+   "example": "2018-01-01"
+  },
+  "channel": {
+   "title": "集計対象となるチャネル",
+   "type": "string",
+   "default": "phone",
+   "enum": [
+    "phone",
+    "web"
+   ]
+  }
+ }
 }
 ```
+
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | パターン/列挙型 | 例 | 必須 |
+| ------ | :------: | ------ | :--------------: | :---: | :---: |
+| `campaignId` | number | 集計対象となるキャンペーンID | | | * |
+| `beginDate` | string | 集計範囲の開始日 | date | `2018-01-01` | * |
+| `endDate` | string | 集計範囲の終了日 | date | `2018-01-01` | * |
+| `channel` | string | 集計対象となるチャネル | `phone`, `web` | | * |
 
 #### レスポンスの JSON-Schema
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonSchema/count/trackingSessions/get.json",
-	"type": "object",
-	"title": "A schema for response body when `GET /count/trackingSessions`.",
-	"required": [
-		"trackingSessions"
-	],
-	"properties": {
-		"trackingSessions": {
-			"title": "計測セッションの集計結果",
-			"type": "object",
-			"properties": {
-				"byCampaign": {
-					"title": "キャンペーン別集計結果",
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "object",
-						"properties": {
-							"campaignId": {
-								"title": "キャンペーン ID",
-								"type": "number"
-							},
-							"label": {
-								"title": "表示名",
-								"type": "string"
-							},
-							"counts": {
-								"title": "日別集計結果",
-								"type": "array",
-								"uniqueItems": true,
-								"properties": {
-									"date": {
-										"title": "日付",
-										"type": "string",
-										"format": "date"
-									},
-									"count": {
-										"title": "計測セッション数",
-										"type": "number"
-									}
-								}
-							}
-						}
-					}
-				},
-				"byObserver": {
-					"title": "観測点別集計結果",
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "object",
-						"properties": {
-							"observerId": {
-								"title": "観測点 ID",
-								"type": "number"
-							},
-							"label": {
-								"title": "表示名",
-								"type": "string"
-							},
-							"counts": {
-								"title": "日別集計結果",
-								"type": "array",
-								"uniqueItems": true,
-								"properties": {
-									"date": {
-										"title": "日付",
-										"type": "string",
-										"format": "date"
-									},
-									"count": {
-										"title": "計測セッション数",
-										"type": "number"
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonSchema/count/trackingSessions/get.json",
+ "type": "object",
+ "title": "A schema for response body when `GET /count/trackingSessions`.",
+ "required": [
+  "trackingSessions"
+ ],
+ "properties": {
+  "trackingSessions": {
+   "title": "計測セッションの集計結果",
+   "type": "object",
+   "properties": {
+    "byCampaign": {
+     "title": "キャンペーン別集計結果",
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "object",
+      "properties": {
+       "campaignId": {
+        "title": "キャンペーン ID",
+        "type": "number"
+       },
+       "label": {
+        "title": "表示名",
+        "type": "string"
+       },
+       "counts": {
+        "title": "日別集計結果",
+        "type": "array",
+        "uniqueItems": true,
+        "properties": {
+         "date": {
+          "title": "日付",
+          "type": "string",
+          "format": "date"
+         },
+         "count": {
+          "title": "計測セッション数",
+          "type": "number"
+         }
+        }
+       }
+      }
+     }
+    },
+    "byObserver": {
+     "title": "観測点別集計結果",
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "object",
+      "properties": {
+       "observerId": {
+        "title": "観測点 ID",
+        "type": "number"
+       },
+       "label": {
+        "title": "表示名",
+        "type": "string"
+       },
+       "counts": {
+        "title": "日別集計結果",
+        "type": "array",
+        "uniqueItems": true,
+        "properties": {
+         "date": {
+          "title": "日付",
+          "type": "string",
+          "format": "date"
+         },
+         "count": {
+          "title": "計測セッション数",
+          "type": "number"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 ```
 
 #### レスポンス項目
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
+| ----- | ------- | ------ | ----- |
 | `count` | number | カウント | レスポンスに含まれているセッション数 |
 | `total` | number | トータル | Query結果に含まれているセッション数 |
 
 ##### `"trackingSessions.byCampaign"` 以下
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
-| `campaignId` | number | キャンペーンID |  |
-| `label` | string | キャンペーン名 |  |
+| ----- | ------- | ------ | ----- |
+| `campaignId` | number | キャンペーンID | |
+| `label` | string | キャンペーン名 | |
 | `counts.date` | string | セッション集計日 | `yyyy-mm-dd` |
-| `counts.counr` | number | セッション数 |  |
+| `counts.counr` | number | セッション数 | |
