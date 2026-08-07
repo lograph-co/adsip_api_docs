@@ -2,7 +2,7 @@
 
 ### `GET`
 
-観測点コレクションを返kします。
+観測点コレクションを返します。
 
 観測点IDが指定された場合は、指定された観測点IDに一致する1件分のコレクションを返します(他のパラメータは無視されます)。キャンペーンIDが指定された場合は、指定されたキャンペーンIDにひもづく観測点のコレクションを返します。観測点ID、キャンペーンIDがいずれも指定されない場合はエラーを返します。
 
@@ -33,311 +33,320 @@
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonValidate/observers/get.json",
-	"type": "object",
-	"title": "A schema for request parameters when `GET /observers`.",
-	"properties": {
-		"observerId": {
-			"title": "Observer ID",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"campaignId": {
-			"title": "Campaign ID",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"page": {
-			"title": "Number of page",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"limit": {
-			"title": "Number of contain in 1 page",
-			"anyOf": [
-				{
-					"type": "string",
-					"pattern": "^[0-9]+$"
-				},
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			]
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonValidate/observers/get.json",
+ "type": "object",
+ "title": "A schema for request parameters when `GET /observers`.",
+ "properties": {
+  "observerId": {
+   "title": "Observer ID",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "campaignId": {
+   "title": "Campaign ID",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "page": {
+   "title": "Number of page",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "limit": {
+   "title": "Number of contain in 1 page",
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9]+$"
+    },
+    {
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  }
+ }
 }
 ```
+
+#### リクエスト項目
+
+| 項目 | タイプ | 説明 | パターン/列挙型 |
+| ------ | :------: | ------ | :--------------: |
+| `observerId` | string / number / null | 観測点ID | `^[0-9]+$` |
+| `campaignId` | string / number / null | キャンペーンID | `^[0-9]+$` |
+| `page` | string / number / null | 取得するページ番号 | `^[0-9]+$` |
+| `limit` | string / number / null | 1ページあたりの取得件数 | `^[0-9]+$` |
 
 #### レスポンスの JSON-Schema
 
 ```json
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "jsonSchema/observers/get.json",
-	"type": "object",
-	"title": "A schema for response body when request `GET /observers`.",
-	"required": [
-		"count",
-		"total",
-		"_embedded"
-	],
-	"properties": {
-		"count": {
-			"title": "Number of campaign in a response.",
-			"type": "number"
-		},
-		"total": {
-			"title": "Number of campaign in a query.",
-			"type": "number"
-		},
-		"_embedded": {
-			"type": "object",
-			"required": [
-				"observers"
-			],
-			"properties": {
-				"observers": {
-					"title": "Observer collection",
-					"type": "array",
-					"items": {
-						"title": "Observer",
-						"type": "object",
-						"properties": {
-							"campaignId": {
-								"title": "観測点に紐づくキャンペーン ID",
-								"type": "number"
-							},
-							"label": {
-								"title": "表示名",
-								"type": "string"
-							},
-							"lifetime": {
-								"title": "計測セッションの継続期間（ミリ秒）",
-								"type": "number"
-							},
-							"priority": {
-								"title": "観測点の優先順位（大きな方を優先）",
-								"type": "number"
-							},
-							"condition": {
-								"type": "object",
-								"oneOf": [
-									{
-										"required": [
-											"channel",
-											"targetDevice"
-										],
-										"properties": {
-											"channel": {
-												"title": "対象チャネル",
-												"type": "string",
-												"enum": [
-													"phone"
-												]
-											},
-											"targetPhoneNumber": {
-												"title": "置換対象番号",
-												"type": "string"
-											},
-											"defaultTrackingNumberId": {
-												"title": "デフォルト番号",
-												"type": "number"
-											},
-											"targetDevice": {
-												"title": "対応デバイス",
-												"type": "string",
-												"enum": [
-													"all",
-													"pc",
-													"mobile"
-												]
-											},
-											"triggers": {
-												"title": "観測点の発動条件トリガ",
-												"type": "array",
-												"uniqueItems": true,
-												"items": {
-													"type": "object",
-													"required": [
-														"target",
-														"type",
-														"method",
-														"formula"
-													],
-													"properties": {
-														"target": {
-															"title": "対象",
-															"type": "string",
-															"enum": [
-																"landing",
-																"referrer",
-																"recent"
-															]
-														},
-														"type": {
-															"title": "トリガ種別",
-															"type": "string",
-															"enum": [
-																"domain",
-																"path",
-																"query"
-															]
-														},
-														"method": {
-															"title": "トリガの評価方法",
-															"type": "string",
-															"enum": [
-																"equal",
-																"forwardMatch",
-																"partialMatch",
-																"regex"
-															]
-														},
-														"formula": {
-															"title": "トリガの評価式",
-															"type": "string"
-														},
-														"subject": {
-															"title": "トリガの評価対象（パラメータ名）",
-															"type": "string"
-														}
-													}
-												}
-											}
-										}
-									},
-									{
-										"required": [
-											"channel"
-										],
-										"properties": {
-											"channel": {
-												"title": "対象チャネル",
-												"type": "string",
-												"enum": [
-													"web"
-												]
-											}
-										}
-									}
-								]
-							},
-							"createdAt": {
-								"title": "作成日時",
-								"type": "string",
-								"format": "date-time"
-							},
-							"deletedAt": {
-								"title": "削除日時",
-								"type": "string",
-								"format": "date-time"
-							},
-							"_embedded": {
-								"type": "object",
-								"properties": {
-									"trackingNumbers": {
-										"title": "Tracking number collection",
-										"type": "array",
-										"items": {
-											"title": "Tracking number",
-											"type": "object",
-											"properties": {
-												"trackingNumberId": {
-													"title": "Tracking number ID",
-													"type": "number"
-												},
-												"phoneNumber": {
-													"title": "電話番号",
-													"type": "string"
-												},
-												"observers": {
-													"title": "束縛先観測点 ID collection",
-													"type": "array",
-													"items": {
-														"title": "Observer ID",
-														"type": "number"
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "jsonSchema/observers/get.json",
+ "type": "object",
+ "title": "A schema for response body when request `GET /observers`.",
+ "required": [
+  "count",
+  "total",
+  "_embedded"
+ ],
+ "properties": {
+  "count": {
+   "title": "Number of campaign in a response.",
+   "type": "number"
+  },
+  "total": {
+   "title": "Number of campaign in a query.",
+   "type": "number"
+  },
+  "_embedded": {
+   "type": "object",
+   "required": [
+    "observers"
+   ],
+   "properties": {
+    "observers": {
+     "title": "Observer collection",
+     "type": "array",
+     "items": {
+      "title": "Observer",
+      "type": "object",
+      "properties": {
+       "campaignId": {
+        "title": "観測点に紐づくキャンペーン ID",
+        "type": "number"
+       },
+       "label": {
+        "title": "表示名",
+        "type": "string"
+       },
+       "lifetime": {
+        "title": "計測セッションの継続期間（ミリ秒）",
+        "type": "number"
+       },
+       "priority": {
+        "title": "観測点の優先順位（大きな方を優先）",
+        "type": "number"
+       },
+       "condition": {
+        "type": "object",
+        "oneOf": [
+         {
+          "required": [
+           "channel",
+           "targetDevice"
+          ],
+          "properties": {
+           "channel": {
+            "title": "対象チャネル",
+            "type": "string",
+            "enum": [
+             "phone"
+            ]
+           },
+           "targetPhoneNumber": {
+            "title": "置換対象番号",
+            "type": "string"
+           },
+           "defaultTrackingNumberId": {
+            "title": "デフォルト番号",
+            "type": "number"
+           },
+           "targetDevice": {
+            "title": "対応デバイス",
+            "type": "string",
+            "enum": [
+             "all",
+             "pc",
+             "mobile"
+            ]
+           },
+           "triggers": {
+            "title": "観測点の発動条件トリガ",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+             "type": "object",
+             "required": [
+              "target",
+              "type",
+              "method",
+              "formula"
+             ],
+             "properties": {
+              "target": {
+               "title": "対象",
+               "type": "string",
+               "enum": [
+                "landing",
+                "referrer",
+                "recent"
+               ]
+              },
+              "type": {
+               "title": "トリガ種別",
+               "type": "string",
+               "enum": [
+                "domain",
+                "path",
+                "query"
+               ]
+              },
+              "method": {
+               "title": "トリガの評価方法",
+               "type": "string",
+               "enum": [
+                "equal",
+                "forwardMatch",
+                "partialMatch",
+                "regex"
+               ]
+              },
+              "formula": {
+               "title": "トリガの評価式",
+               "type": "string"
+              },
+              "subject": {
+               "title": "トリガの評価対象（パラメータ名）",
+               "type": "string"
+              }
+             }
+            }
+           }
+          }
+         },
+         {
+          "required": [
+           "channel"
+          ],
+          "properties": {
+           "channel": {
+            "title": "対象チャネル",
+            "type": "string",
+            "enum": [
+             "web"
+            ]
+           }
+          }
+         }
+        ]
+       },
+       "createdAt": {
+        "title": "作成日時",
+        "type": "string",
+        "format": "date-time"
+       },
+       "deletedAt": {
+        "title": "削除日時",
+        "type": "string",
+        "format": "date-time"
+       },
+       "_embedded": {
+        "type": "object",
+        "properties": {
+         "trackingNumbers": {
+          "title": "Tracking number collection",
+          "type": "array",
+          "items": {
+           "title": "Tracking number",
+           "type": "object",
+           "properties": {
+            "trackingNumberId": {
+             "title": "Tracking number ID",
+             "type": "number"
+            },
+            "phoneNumber": {
+             "title": "電話番号",
+             "type": "string"
+            },
+            "observers": {
+             "title": "束縛先観測点 ID collection",
+             "type": "array",
+             "items": {
+              "title": "Observer ID",
+              "type": "number"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 ```
 
 #### レスポンス項目
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
+| ----- | ------- | ------ | ----- |
 | `count` | number | カウント | レスポンスに含まれている観測点数 |
 | `total` | number | トータル | Query結果に含まれている観測点数 |
 
 ##### `"_embedded.observers"` 以下
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
-| `observerId` | number | 観測点ID |  |
-| `campaignId` | number | キャンペーンID |  |
-| `label` | string | キャンペーン名 |  |
-| `lifetime` | number | 有効期限 |  |
-| `priority` | number | 優先度 |  |
-| `createdAt` | date | 作成日時 |  |
-| `belongs` | array | 参照できるユーザーを `userId` で指定 |  |
+| ----- | ------- | ------ | ----- |
+| `observerId` | number | 観測点ID | |
+| `campaignId` | number | キャンペーンID | |
+| `label` | string | キャンペーン名 | |
+| `lifetime` | number | 有効期限 | |
+| `priority` | number | 優先度 | |
+| `createdAt` | date | 作成日時 | |
+| `belongs` | array | 参照できるユーザーを `userId` で指定 | |
 | `condition.channel` | string | 計測チャネル | `web` または `phone` |
-| `condition.targetPhoneNumber` | string | 置換対象番号 |  |
+| `condition.targetPhoneNumber` | string | 置換対象番号 | |
 | `condition.targetDevice` | string | 対応デバイス | `pc` , `mobile` 、またはその両方である `all` |
 | `belongs` | array | belongs | 参照できるユーザーを `userId` で指定 |
-| `condition.triggers` | array | 発動条件トリガ |  |
+| `condition.triggers` | array | 発動条件トリガ | |
 
 ##### `"condition.triggers"` 以下
 
 * webチャネルの場合、 `condition.triggers` は存在しません。
 
 | 項目 | タイプ | 説明 | 備考 |
-|-----|-------|------|-----|
+| ----- | ------- | ------ | ----- |
 | `target` | string | 置換対象URL種別 | 評価の対象となるURL設定。 ランディングページ（ `landing` ）、リファラ（ `referrer` ）、最近見たページ（ `currentUrl` ） から選択 |
 | `type` | string | 評価対象要素 | URLのどの箇所を評価対象とするかを指定。メイン（ `domain` ）、パス（ `path` ）、URL パラメータ（ `query` ）から選択 |
 | `subject` | string | パラメータ名 | 評価対象となるパラメータ名 |
-| `method` | string | 評価方法 | 完全一致（ `equal` ）、前方一致（ `forwardMatch` ）、部分一致（ `partialMatch` ）、正規表現（ `regex` ）から選択  |
+| `method` | string | 評価方法 | 完全一致（ `equal` ）、前方一致（ `forwardMatch` ）、部分一致（ `partialMatch` ）、正規表現（ `regex` ）から選択 |
 | `formula` | string | 評価式 | 評価文字列 |
